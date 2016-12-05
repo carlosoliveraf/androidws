@@ -1,0 +1,63 @@
+<div id="painel" style="background-color: red; width: 95%; display: table; padding: 1%; margin: auto; margin-top: 3%">
+<h5>Administrator Tools</h5>
+
+<div style="background-color: white; width: 30%;display: inline-block; padding: 2%; position: absolute;"><h4>Tools</h4>
+<div style="padding: 2%; background-color: brown">
+Give admin privilegies
+<br/>
+Delete Users
+<br/>
+Page Statistics
+<br/>
+
+</div>
+<div style="padding: 2%; background-color: yellow">
+aaaaaaaa
+<br/>
+vbbbbb
+<br/>
+ccccccc
+<br/>
+
+</div>
+
+<div style="padding: 2%; background-color: pink">
+ppppppppp<br/>
+oooooooo
+<br/>
+rrrrrrrr
+<br/>
+
+</div>
+
+<div style="padding: 2%; background-color: green">
+423432432
+<br/>
+ttttttt
+<br/>
+//////
+<br/>
+
+</div>
+</div>
+
+
+<div style="background-color: wheat; width: 67%; float: right; padding: 2%"><h4>Post news!</h4>
+	<input style="width: 50%; " type="text" style="" class="form-control" ng-model="post.title" name="title" placeholder="Title"/>
+	<div style="display: block;">
+	​<textarea id="txtArea" class="form-control" ng-model="post.content" rows="8" cols="70"  placeholder="Post content..."></textarea>
+	<div>Tags: {{tagsString}}</div>
+	</div>
+	<select ng-model="post.category" style="width: 40%; margin-top: 2%; display: inline-block;" class="form-control" name="category" ng-options="category for category in categories">
+		<option value="">Select the category</option>
+	</select>
+	<input style="width: 25%; display: inline-block; margin-left: 3%;margin-top: 2% " type="text" style="" class="form-control" ng-model="tag" name="title" placeholder="Tag"/><button ng-disabled="!tag" ng-click="addTag(tag)" class="btn btn-default" style="width: 10%; display: inline-block; margin-left: 1.5%;" type="button" data-toggle="dropdown">Add Tag</button>
+	<button ng-click="removeTag()" class="btn btn-default" style="width: 15%; display: inline-block; margin-left: 1%;" type="button" data-toggle="dropdown">Remove Last</button>
+	<div style="display: block;">
+	 <button ng-disabled="!post.content" ng-click="submitPost(post)" class="btn btn-default" style="width: 18%; margin-bottom: 3%;margin-top: 2%; display: inline-block;" type="button" data-toggle="dropdown">Submit</button>
+	 <button ng-click="clear(post)" class="btn btn-default" style="width: 18%; margin-bottom: 3%;margin-top: 2%; display: inline-block;" type="button" data-toggle="dropdown">Clear</button>
+</div>
+
+</div>
+
+</div>

@@ -1,0 +1,83 @@
+<div style="width: 60%; display: table; margin: auto; margin-top: 2%">
+	<h4>BlackList:</h4>
+
+	<label ng-if="characters.length == 0" style="color: red;font-size: 85%">There's no characters on your blacklist!</label>
+	<div style="background-color: rgba(164,165,165,0.4);width: 100%;margin-top: 5%; border-style: solid;border-radius: 3%;;
+    border-width: 1px;
+    box-shadow: 10px 10px 5px #888888; height: 20%; display: table; padding: 5%" ng-if="characters.length > 0">
+    <table class="table" style="width: 95%; table-layout: fixed; border-collapse: collapse; margin: auto">
+		<tr>
+			<th style="width: 3%"><img src="./clientside/img/blacklistskull.png" alt="skullicon" style="width: 80%"></th>
+			<th ng-click="orderBy('name')" style="cursor: pointer;width: 12%">Name</th>
+			<th ng-click="orderBy('level')" style="cursor: pointer;width: 7%">Level</th>
+			<th ng-click="orderBy('vocation')" style="cursor: pointer;width: 12%">Vocation</th>
+			<th ng-click="orderBy('isOnline')" style="cursor: pointer;width: 6%">Status</th>
+			<th style="width: 6%">Option</th>
+			<th style="width: 3%"><img src="./clientside/img/blacklistskull.png" alt="skullicon" style="width: 80%"></th>
+
+<!-- 			<th style="width: 20%"></th>
+ -->		</tr>
+<!-- 	<! 	<tr ng-repeat="character in characters | orderBy: field : direction">
+ -->		<tr ng-repeat="char in characters | orderBy:field:order">
+			<td></td>
+			<td>{{char.name}}</td>
+
+			<td>{{char.level}}</td>
+
+			<td ng-class="checkVoc(char)">
+				<img ng-if="char.vocation == 'Knight'" src="./clientside/img/axe.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Elite Knight'" src="./clientside/img/stonecutter.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Paladin'" src="./clientside/img/bow.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Royal Paladin'" src="./clientside/img/xbow.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Sorcerer'" src="./clientside/img/wand.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Master Sorcerer'" src="./clientside/img/everblazing.gif" alt="skullicon" 
+				style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Druid'" src="./clientside/img/rod.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Elder Druid'" src="./clientside/img/glacialrod.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				
+
+			{{char.vocation}}</td>
+			<td ng-class="checkOn(char)">{{char.isOnline ? "Online" : "Offline"}}</td>
+			<td>
+			<button class="btn btn-danger btn-sm" ng-click="eraseCharacter(char)">Delete</button></td>
+			</tr>
+			
+
+			<!-- <td>
+			<button class="btn btn-default btn-sm" ng-click="updateCharacter(character)" ng-disabled="!edition">Update</button>
+			<button class="btn btn-info btn-sm" ng-click="editCharacter(character)">Edit</button>
+			<button class="btn btn-danger btn-sm" ng-click="eraseCharacter(character)">Delete</button></td>
+		</tr> -->
+	</table>
+
+    </div>
+
+
+			<div style="width: 80%;display: table; margin: auto; margin-top: 2%; border-style: solid;
+    border-width: 1px; border-radius: 3%;
+    box-shadow: 10px 10px 5px #888888; height: 20%; padding-top: 2%;padding-right: 2%;padding-left: 2%;padding-bottom: 5%">
+<h5>Add to BlackList:</h5>
+<input type="text" style="margin: 2%; background-color: #ffffff; width: 45%; float: left;" class="form-control" ng-model="oficial.name" name="name" placeholder="Character Name" ng-required="true"/>
+	<button ng-click="checkCharacter(oficial)" style="margin: 2%;" class="btn btn-success btn-sm" >Verificar</button>
+<div style="width: 90%" ng-if="oficialResp">
+<br/>
+	<label>Name: </label> {{oficialResp.character.name}}<br/>
+	<label>Sex: </label> {{oficialResp.character.sex}}<br/>
+	<label>Level: </label> {{oficialResp.character.level}}<br/>
+	<label>Vocation: </label> {{oficialResp.character.vocation}}<br/>
+	<label>World: </label> {{oficialResp.character.world}}<br/>
+	<label>Residence: </label> {{oficialResp.character.residence}}<br/>
+	<label>Last Login: </label> {{oficialResp.character.lastLogin}}<br/>
+	<div style="text-align: left"><input style="margin-right: 2%; margin-top: 2%" type="checkbox" ng-model="oficialResp.character.alert"></input><label>E-mail me whenever he logs in!</label></div>
+	<div style="text-align: left"><button ng-click="saveCharacter(oficialResp.character)" style="margin: 2%;" class="btn btn-success btn-sm" >Add Character</button></div>
+
+</div>
+
+
+
+
+ </div>
+
+
+
+</div>

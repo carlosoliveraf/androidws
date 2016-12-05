@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="tbamonitorweb">
+<head>
+<style>
+
+
+</style>
+	<title>TB Characters On-Line</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	</head>
+<body>
+    <section ng-view=""></section>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript" charset="utf-8">
+    angular.module('tbamonitorweb', ['ngRoute'])
+    .config(['$routeProvider', '$http', function ($routeProvider, $http){
+        console.log('hola');
+        $routeProvider
+        .when('/', {
+            resolve: **??? I tried with templateUrl but did not work either**
+            ,controller: 'indexCtrl'
+        })
+        .when('/second', {
+            resolve: **???**
+            ,controller: 'secondCtrl'
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
+    }])
+    .controller('indexCtrl', ['$scope', function ($scope){
+        $scope.helloWorld = "Hello World";
+    }])
+    .controller('secondCtrl', ['$scope', function ($scope){
+        $scope.helloWorld = "World Hello";
+    }]);
+    </script>
+	<div id="title" style="width: 100%">
+		<h1 style="padding: 1%; color: white">Character Monitor</h1>
+	</div>
+	<div id="menu">
+      <ul class="nav nav-tabs">
+         <li><a href="#/home">Home</a></li>
+         <li><a href="#/characters">Characters</a></li>
+         <li><a href="#/huntingplaces">Hunting Places</a></li>
+         <li><a href="#/readytohunt">Ready to Hunt!</a></li>
+
+      </ul>
+      </div>
+	<div id="view" ng-view></div>
+	<div id="footer"></div>
+</body>
+</html>

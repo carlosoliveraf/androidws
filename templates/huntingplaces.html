@@ -1,0 +1,35 @@
+<div style="width: 75%; margin: auto">
+<div style="width: 100%; margin: auto; text-align: center;">
+   <button ng-click="showNewHuntingInput()" style="margin: 2%" class="btn btn-default btn-sm">New Hunting Place!</button>
+  
+   <table class="table table-bordered" style="width: 100%; margin: auto;%; color: white; table-layout: fixed;
+  border-collapse: collapse;">
+      <tr>
+               <th style="width: 3%"><img src="./clientside/img/blacklistskull.png" alt="skullicon" style="width: 80%"></th>
+
+         <th ng-click="setOrder('name')">Name</th>
+         <th ng-click="setOrder('level')">Level Range</th>
+         <th ng-click="setOrder('stamina')">City</th>
+         <th ng-click="setOrder('vocation')">Vocation</th>
+         <th ng-click="setOrder('vocation')">Download</th>
+         <th style="width: 3%"><img src="./clientside/img/blacklistskull.png" alt="skullicon" style="width: 80%"></th>
+
+
+      </tr>
+   <!--  <tr ng-repeat="character in characters | orderBy: field : direction"> -->
+      <tr>
+               <td></td>
+
+         <td>{{character.name}}</td>
+         <td>{{character.level}}</td>
+         <td>{{character.stamina | date:'HH:mm'}}</td>
+         <td>{{character.vocation}}</td>
+         <td>{{character.vocation}}</td>
+
+         <td>
+         <button style="margin: 3%" class="btn btn-info btn-sm" ng-click="editCharacter(character)">Edit</button>
+         <button style="margin: 3%" class="btn btn-danger btn-sm" ng-click="eraseCharacter(character)">Delete</button></td>
+      </tr>
+   </table>
+</div>      
+      </div>

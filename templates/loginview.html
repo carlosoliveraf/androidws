@@ -1,0 +1,51 @@
+<div style="width: 33%; display: table; margin: auto;margin-top: 4%; border-radius: 10%; border-style: solid;
+    border-width: 1px;
+    box-shadow: 10px 10px 5px #888888;">
+
+<div style="width: 55%; margin: auto; margin-top: 15%;margin-bottom: 16%; text-align: center">
+    <label>Username</label>
+<input style="margin-bottom: 10%" type="text" style="" class="form-control" ng-model="params.login" name="login" placeholder="Username" ng-required="true"/>
+
+<!-- show password as type="password" -->
+<div ng-if="!showPassword"
+       class="form-group has-feedback">
+    <label>Password</label>
+    <input type="password"
+           ng-model="params.password"
+           class="form-control"
+           placeholder="Password">
+    <span ng-if="params.password"
+          ng-click="toggleShowPassword()"
+          class="glyphicon glyphicon-eye-open form-control-feedback" 
+          style="cursor: pointer; pointer-events: all;">
+    </span>
+  </div>
+
+  <!-- show password as type="text" -->
+  <div ng-if="showPassword"
+       class="form-group has-feedback">
+    <label>Password</label>
+    <input type="text"
+           ng-model="params.password"
+           class="form-control"
+           placeholder="Password">
+    <span ng-if="params.password"
+          ng-click="toggleShowPassword()"
+          class="glyphicon glyphicon-eye-close form-control-feedback" 
+          style="cursor: pointer; pointer-events: all;">
+    </span>
+  </div>
+  <div ng-if="error"><label style="color: red">Incorrect login or password! </label></div>
+  <div style="text-align: center">
+            <button ng-click="login(params)" class="btn btn-default" style="margin: auto;width: 150px; display: inline-block; margin-top: 10%" type="button" data-toggle="dropdown">Login
+            </button></div>
+             <div style="text-align: center">
+            <div class="dropdown"><a style="margin: auto;width: 150px; display: inline-block; margin-top: 10%" href="#/passwordrecoverview" class="btn btn-default btn-sm">Forgot your password?</a>
+          </div>
+           <div class="dropdown"><a style="margin: auto;width: 150px; display: inline-block; margin-top: 10%" href="#/signinview" class="btn btn-default btn-sm">Sign in</a>
+          </div></div>
+</div>
+
+
+	</div>
+

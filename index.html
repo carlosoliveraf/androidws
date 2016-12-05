@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta name="name" content="something" charset="UTF-8">
+    
+    <title>Tibia Character Monitor</title>
+        <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style type="text/css">
+        .marginPerson {
+          margin-right: 0.6%;
+        }
+        .bold{
+          font-weight: bold;
+        }
+        .redColor{
+          color: red;
+
+        }
+        .blueColor{
+          color: blue;
+
+        }
+        .blackColor{
+          color: black;
+
+        }
+        .brownColor{
+          color: #493207;
+
+        }
+        .pinkColor{
+          color: #f022d3;
+
+        }
+        .greenColor{
+          color: green;
+
+        }
+        .yellowColor{
+          color: #FAD355;
+
+        }
+        .onlineColor{
+          color: #33ff33;
+        }
+        .fullStamina{
+          color: #41F31E;
+        }
+        .bonusStamina{
+          color: #41F31E;
+        }
+        .lowStamina{
+          color: #D17106;
+        }
+        .blackBorder{
+          border-color: black;
+        }
+        .padding3{
+          padding-bottom: 4%;
+        }
+
+        </style>
+</head>
+<body background="clientside/img/wall.jpg" style="background-repeat:no-repeat; background-size:cover; background-attachment: fixed">
+    
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="clientside/app.js"></script>
+    <script src="clientside/routes/routes.js"></script>
+    <script src="clientside/controllers/indexCtrl.js"></script>
+    <script src="clientside/controllers/loginCtrl.js"></script>
+    <script src="clientside/controllers/signinCtrl.js"></script>
+    <script src="clientside/controllers/pwdrecoverCtrl.js"></script>
+    <script src="clientside/controllers/characterCtrl.js"></script>
+    <script src="clientside/controllers/blacklistCtrl.js"></script>
+    <script src="clientside/controllers/huntingplacesCtrl.js"></script>
+    <script src="clientside/controllers/lastimageCtrl.js"></script>
+    <script src="clientside/controllers/aboutmeCtrl.js"></script>
+    <script src="clientside/controllers/404errorCtrl.js"></script>
+    <script src="clientside/controllers/adminCtrl.js"></script>
+    <script src="clientside/controllers/usereditionCtrl.js"></script>
+    <script src="clientside/staminaCalc.js"></script>    
+    <script src="clientside/criptography.js"></script>
+    
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+
+  <!--   <section ng-view=""></section> -->
+  
+	<div id="title" style="width: 100%; background-color: black;box-shadow: 0px 8px 5px #888888;" ng-class="menu ? '':'padding3'">
+  <div style="text-align: center; padding-top: 3%;background-color: black; color: white"><p style="font-family: 'Courier New', Courier, monospace; font-size: 25px; color: white"><strong>Tibia Character Monitor</strong></p></div>
+
+	
+    
+    
+    <div id="menu" ng-if="menu" style="background-color: black">
+      <ul style="color: white; padding: 1%" class="nav nav-tabs blackBorder">
+        <li class="marginPerson">
+          <div class="dropdown" ><a style="width: 110px" href="#/home" class="btn btn-default btn-sm">Home</a>
+          </div>
+        </li>
+        <li class="marginPerson">
+          <div class="dropdown">
+            <button class="btn btn-default btn-sm" style="width: 110px" type="button" data-toggle="dropdown">Characters
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#/mycharactersview">My Characters</a></li>
+              <li><a href="#/newcharactersview">New Character</a></li>
+              <li><a href="#/charactersstatsview">Characters Stats</a></li>
+              <li><a href="#/blacklistview">Blacklist</a></li>
+            </ul>
+          </div>
+        </li>        
+
+        <li class="marginPerson">
+          <div class="dropdown">
+            <button class="btn btn-default btn-sm" style="width: 110px" type="button" data-toggle="dropdown">Hunting Places
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#/listplacesview">List Places</a></li>
+              <li><a href="#/newplaceview">New Place</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="marginPerson">
+          <div class="dropdown"><a href="#/readytohuntview" style="width: 110px" class="btn btn-default btn-sm">Ready to Hunt</a>
+          </div>
+        </li>
+         <li class="marginPerson">
+          <div class="dropdown"><a href="#/lastimageview" style="width: 110px" class="btn btn-default btn-sm">Check 'Live'!</a>
+          </div>
+        </li> 
+         <li class="marginPerson">
+          <div class="dropdown"><a href="#/aboutmeview" style="width: 110px" class="btn btn-default btn-sm">About me</a>
+          </div>
+        </li>   
+        <li class="marginPerson" ng-if="isAdmin">
+          <div class="dropdown"><a href="#/adminview" style="width: 110px; background-color: #555555; color: white; font-family: monospace;" class="btn btn-default btn-sm">Admin Tools</a>
+          </div>
+        </li>       
+        <div class="dropdown" style="margin-left: 80%">
+        <li  style="color: white">Welcome <strong>{{username}}!
+        <a style="color: white; text-decoration: underline;text-decoration: bold; font-size: 90%; margin-left: 4%;margin-right: 2%" href="#/usereditionview">Edit User</a>
+        <a style="color: white; text-decoration: underline;text-decoration: bold;font-size: 90%; margin-left: 2%" href="#/">Logoff</a></strong>
+        </li></div>
+      </ul>
+    </div></div>
+
+    <div id="view" ng-view></div>
+</body>
+</html>
+
+
+
+
+
+	
+
+
+
+

@@ -1,0 +1,27 @@
+<div style="width: 50%; margin: auto;padding: 2%; margin-top: 0.5%">
+<h3 style="color: black">What's new!?<h3>
+	<div style="background-color: rgba(164,165,165,0.4); width: 90%; margin: auto; padding: 4%; font-size: 60%; text-align: justify; border-style: solid; border-width: 1px; border-radius: 1%" ng-repeat="post in posts | orderBy: 'date': true">
+				<label style="display: block; font-size: 115%"><strong>{{post.title}}</strong></label>
+				<label style="font-size: 90%;">Post by: <strong>{{post.username}}</strong> at {{post.date | date: 'dd/MM/yyyy'}}</label>
+				
+		<div style="display: block;">
+		<label style="margin-top: 1%; margin-bottom: 2%">{{post.content}}</label>
+		</div>
+		
+
+		
+
+		<label style="font-size: 90%">Tags: </label>
+		<div style="display: inline;font-size: 90%" ng-repeat="tag in post.tags">
+			<label>{{tag}}</label>
+		</div><br/>
+		<label style="font-size: 90%">Category:</label>
+		<label style="font-size: 90%">{{post.category}}</label>
+		<div>
+		
+		</div>
+
+		</div>
+
+
+</div>

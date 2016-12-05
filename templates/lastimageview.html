@@ -1,0 +1,15 @@
+<div style="width: 78%; display: table; margin: auto; margin-top: 2%">
+
+	<h4>Last record saved for your user:</h4>
+
+<div style="width: 100%;display: table; margin: auto; margin-top: 2%; border-style: solid;
+    border-width: 1px; border-radius: 3%;
+    box-shadow: 10px 10px 5px #888888; height: 20%; padding-top: 2%;padding-right: 2%;padding-left: 2%;padding-bottom: 5%">
+
+
+<!-- <img ng-src="data:image/JPEG;base64,{{image}}"> -->
+<img style="width: 100%" ng-src={{image}} alt="No records yet" ng-if="!noRecord">
+<label ng-if="noRecord">No image records yet!</label>
+
+ </div>
+</div>

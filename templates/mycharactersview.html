@@ -1,0 +1,117 @@
+<div style="width: 60%; display: table; margin: auto; margin-top: 2%">
+	<h4>Character Data:</h4>
+
+	<!-- <select ng-model="character" style="margin: 2%; background-color: #ffffff; width: 35%;" class="form-control" name="vocation" ng-options="character.name for character in characters" ng-disabled="edition">
+		<option value="">Select the character</option>
+	</select> -->
+	   <label style="color: red; font-size: 85%" ng-if="characters.length == 0">There is no characters in your account!</label><br/>
+	   <button ng-disabled="characters.length == 0" class="btn btn-info btn-sm" ng-click="showAll()" ng-if="!showChars">Show All</button>
+	   <!-- <button ng-disabled="characters.length == 0" class="btn btn-danger btn-sm" ng-click="showAll()" ng-if="showChars">Hide All</button> -->
+	   <label ng-if="showChars" style="font-size: 85%">Click on the character line for edition!</label>
+	<div style="background-color: rgba(164,165,165,0.4);width: 100%;margin-top: 5%; border-style: solid;border-radius: 3%;;
+    border-width: 1px;
+    box-shadow: 10px 10px 5px #888888; height: 20%; display: table; padding: 5%" ng-if="showChars && !character">
+    <table class="table table-hover" style="cursor: pointer; width: 95%; table-layout: fixed; border-collapse: collapse; margin: auto">
+		<tr>
+			<th ng-click="orderBy('name')" style="width: 20%">Name</th>
+			<th ng-click="orderBy('level')" style="width: 13%">Level</th>
+			<th ng-click="orderBy('vocation')" style="padding-left: 4%;width: 23%">Vocation</th>
+			<th ng-click="orderBy('stamina')" style="width: 14%">Stamina</th>
+			<th ng-click="orderBy('balance')" style="width: 14%">Balance</th>
+			<th ng-click="orderBy('isOnline')" style="width: 7%">Status</th>
+
+<!-- 			<th style="width: 20%"></th>
+ -->		</tr>
+<!-- 	<! 	<tr ng-repeat="character in characters | orderBy: field : direction">
+ -->		<tr ng-click="selectChar(char)" ng-repeat="char in characters | orderBy:field:order">
+			
+			<td>{{char.name}}</td>
+
+			<td style="padding-left: 2%;">{{char.level}}</td>
+
+			<td ng-class="checkVoc(char)">
+				<img ng-if="char.vocation == 'Knight'" src="./clientside/img/axe.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Elite Knight'" src="./clientside/img/stonecutter.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Paladin'" src="./clientside/img/bow.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Royal Paladin'" src="./clientside/img/xbow.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Sorcerer'" src="./clientside/img/wand.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Master Sorcerer'" src="./clientside/img/everblazing.gif" alt="skullicon" 
+				style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Druid'" src="./clientside/img/rod.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				<img ng-if="char.vocation == 'Elder Druid'" src="./clientside/img/glacialrod.gif" alt="skullicon" style="height: 85%; margin-right: 1,5%">
+				
+
+			{{char.vocation}}</td>
+
+
+			<td style="padding-left: 2.5%" ng-class="staminaClass(char)">{{char.stamina}}</td>
+
+			<td>{{char.balance | currency}}</td>
+			<td ng-class="checkOn(char)">{{char.isOnline ? "Online" : "Offline"}}</td>
+
+			</tr>
+			
+
+			<!-- <td>
+			<button class="btn btn-default btn-sm" ng-click="updateCharacter(character)" ng-disabled="!edition">Update</button>
+			<button class="btn btn-info btn-sm" ng-click="editCharacter(character)">Edit</button>
+			<button class="btn btn-danger btn-sm" ng-click="eraseCharacter(character)">Delete</button></td>
+		</tr> -->
+	</table>
+
+    </div>
+
+
+	<div style="width: 100%;margin-top: 5%; border-style: solid;border-radius: 3%;;
+    border-width: 1px;
+    box-shadow: 10px 10px 5px #888888; height: 20%; display: table; padding: 5%" ng-if="character">
+	<div style="margin-bottom: 0.8%">
+	<label style="margin-top: 1%; margin-bottom: 1%">Name: </label> {{character.name}}<br/>
+	<label>Sex: </label> {{character.sex}}<br/>
+	<label>Level: </label> {{character.level}}<br/>
+	<label>Vocation: </label> <img ng-if="character.vocation == 'Knight'" src="./clientside/img/axe.gif" alt="skullicon" style="margin-left: 1%;width: 3%;">
+				<img ng-if="character.vocation == 'Elite Knight'" src="./clientside/img/stonecutter.gif" alt="skullicon" style="margin-left: 1%;width: 3%;">
+				<img ng-if="character.vocation == 'Paladin'" src="./clientside/img/bow.gif" alt="skullicon" style="margin-left: 1%;width: 3%;">
+				<img ng-if="character.vocation == 'Royal Paladin'" src="./clientside/img/xbow.gif" alt="skullicon" style="margin-left: 1%;width: 3%;">
+				<img ng-if="character.vocation == 'Sorcerer'" src="./clientside/img/wand.gif" alt="skullicon" style="margin-left: 1%;width: 3%;">
+				<img ng-if="character.vocation == 'Master Sorcerer'" src="./clientside/img/everblazing.gif" alt="skullicon" 
+				style="margin-left: 1%;width: 3%;">
+				<img ng-if="character.vocation == 'Druid'" src="./clientside/img/rod.gif" alt="skullicon" style="margin-left: 1%;width: 3%;">
+				<img ng-if="character.vocation == 'Elder Druid'" src="./clientside/img/glacialrod.gif" alt="skullicon" style="margin-left: 1%;width: 3%;"><br/>
+	<label>World: </label> {{character.world}}<br/>
+	<label>Residence: </label> {{character.residence}}<br/>
+	
+</div>
+
+	<table class="table" style="width: 50%; table-layout: fixed; border-collapse: collapse;" >
+		<tr>
+			<th style="width: 30%">Current Stamina</th>
+			<th style="width: 40%">Current Balance</th>
+
+<!-- 			<th style="width: 20%"></th>
+ -->		</tr>
+<!-- 	<! 	<tr ng-repeat="character in characters | orderBy: field : direction">
+ -->		<tr>
+			
+			<!-- <td ng-if="!edition" style="margin-top: 0.5%">{{character.stamina}}</td> -->
+			<td><input style="width: 60%" type="text" ng-disabled="!edition" ng-model="character.stamina" name="stamina" placeholder="Stamina" ng-required="true"/></td>
+
+<!-- 			<td ng-if="!edition" style="margin-top: 0.5%">{{character.balance | currency}}</td> -->
+			<td><input style="width: 80%" type="number" ng-disabled="!edition" ng-model="character.balance" name="balance" placeholder="Balance" ng-required="true"/></td>
+
+			<!-- <td>
+			<button class="btn btn-default btn-sm" ng-click="updateCharacter(character)" ng-disabled="!edition">Update</button>
+			<button class="btn btn-info btn-sm" ng-click="editCharacter(character)">Edit</button>
+			<button class="btn btn-danger btn-sm" ng-click="eraseCharacter(character)">Delete</button></td>
+		</tr> -->
+	</table>
+	<div style="width: 100%; text-align: center; margin-top: 0.5%; margin-bottom: 0.5%">
+<button class="btn btn-default btn-sm" ng-click="updateCharacter(character)" ng-disabled="!edition">Update</button>
+			<button class="btn btn-info btn-sm" ng-click="editCharacter(character)">Edit</button>
+			<button class="btn btn-danger btn-sm" ng-click="eraseCharacter(character)">Delete</button>
+</div>
+	</div>			
+
+
+<br/>
+</div>

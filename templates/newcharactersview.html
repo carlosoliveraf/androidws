@@ -1,0 +1,48 @@
+<div style="width: 60%; display: table; margin: auto; margin-top: 2%">
+
+	<h4>Character Data:</h4>
+
+<div style="width: 80%;display: table; margin: auto; margin-top: 2%; border-style: solid;
+    border-width: 1px; border-radius: 3%;
+    box-shadow: 10px 10px 5px #888888; height: 20%; padding-top: 2%;padding-right: 2%;padding-left: 2%;padding-bottom: 5%">
+
+<input type="text" style="margin: 2%; background-color: #ffffff; width: 45%; float: left;" class="form-control" ng-model="oficial.name" name="name" placeholder="Character Name" ng-required="true"/>
+	<button ng-click="checkCharacter(oficial)" style="margin: 2%;" class="btn btn-success btn-sm" >Verificar</button>
+<div style="width: 90%" ng-if="oficialResp">
+<br/>
+	<label>Name: </label> {{oficialResp.character.name}}<br/>
+	<label>Sex: </label> {{oficialResp.character.sex}}<br/>
+	<label>Level: </label> {{oficialResp.character.level}}<br/>
+	<label>Vocation: </label> {{oficialResp.character.vocation}}<br/>
+	<label>World: </label> {{oficialResp.character.world}}<br/>
+	<label>Residence: </label> {{oficialResp.character.residence}}<br/>
+	<label>Last Login: </label> {{oficialResp.character.lastLogin}}<br/>
+	<div style="text-align: left"><button ng-click="saveCharacter(oficialResp.character)" style="margin: 2%;" class="btn btn-success btn-sm" >Create Character</button></div>
+</div>
+
+
+
+<!-- <form name="characterForm" novalidate>
+	<input type="text" style="margin: 2%; background-color: #ffffff; width: 45%; float: left;" class="form-control" ng-model="newcharacter.name" name="name" placeholder="Character Name" ng-required="true"/>
+	<select ng-model="newcharacter.vocation" style="margin: 2%; background-color: #ffffff; width: 45%; float: right;" class="form-control" name="vocation" ng-options="vocation for vocation in vocations">
+		<option value="">Select the vocation</option>
+	</select>
+
+	<input type="number" style="margin: 2%; background-color: #ffffff ; width: 45%; float: left;" class="form-control" ng-model="newcharacter.level" name="level" placeholder="Level" ng-required="true"/>
+	
+	<input type="number" style="margin: 2%; background-color: #ffffff; width: 45%; float: right;" class="form-control" ng-model="newcharacter.stamina" name="stamina" placeholder="Stamina" ng-required="true"/>
+
+	<div style="width: 100%; display: table">
+	<input type="number" style="margin: 2%; background-color: #ffffff ; width: 45%; float: left;" class="form-control" ng-model="newcharacter.balance" name="balance" placeholder="Bank Balance" ng-required="true"/></div>
+	<br/>
+
+
+
+	<div style="width: 60%; display: inline-block;">
+	<button ng-click="saveCharacter(newcharacter)" style="margin: 2%;" class="btn btn-success btn-sm" ng-disabled="characterForm.$invalid">Create Character</button>
+
+	<button ng-click="clearFields(newcharacter)" style="margin: 2%" class="btn btn-warning btn-sm">Clear Fields</button>
+	</div>
+</form>
+ --></div>
+</div>
