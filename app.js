@@ -20,7 +20,7 @@ var fs = require('fs'),
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
-var url = 'mongodb://root:mongouser@ds021895.mlab.com:21895/tbamonitor';
+var url = 'mongodb://root:admin@ds119728.mlab.com:19728/androidws';
 //
 
 
@@ -104,37 +104,6 @@ app.get('/', function(req, res) {
     res.sendfile('index.html', {root: __dirname })
 });
 
-// app.get('/', function (req, res) {
-//     res.render('index');
-// }); 
-
-
-// app.get('*', function (req, res) {
-//     res.render('index');
-// });
-
-// app.get('index/', function (req, res) {
-	//res.status(500).end();
-	
-	//userController.list(function(resp){
-		//res.json(resp);
-		
-
-	//});
-
-
-
-	//res.json(itens);
-// });
-
-
-
-
-
-
-
-
-
 
 
 
@@ -180,6 +149,23 @@ app.get('/users/:id', function (req, res) {
 	// res.json(itens);
 });
 
+
+app.post('/login', function (req, res) {
+
+	var username = req.param('username');
+	userController.userByName(username, function(resp){
+		res.json(resp);
+
+	});
+
+
+
+	//res.end("post")
+	//itens.push(item);
+	//res.end();
+});
+
+
 app.post('/users', function (req, res) {
 
 	var user = req.body;
@@ -195,7 +181,6 @@ app.post('/users', function (req, res) {
 
 
 
-
 app.put('/users', function (req, res) {
 	
 	//var id = req.param('_id');
@@ -206,11 +191,6 @@ app.put('/users', function (req, res) {
 	});
 
 });
-
-
-
-
-
 
 
 
