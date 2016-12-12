@@ -27,11 +27,26 @@ db.once('open', function(){
 		funcionamento: String,
 		url: String,
 		telefone: Number,
+		endereco: String,
 		lat: Number,
 		long: Number
 	});
 
 	exports.Place = mongoose.model('Place', placeSchema);
+
+	var postSchema = mongoose.Schema({
+		created_at: Date,
+		produto: Number,
+		lotacao: Number,
+		precos: Number,
+		atendimento: Number,
+		obs: String,
+		user: String,
+		place: String
+
+	});
+
+	exports.Post = mongoose.model('Post', postSchema);
 
 
 });
