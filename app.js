@@ -25,35 +25,6 @@ var url = 'mongodb://root:admin@ds119728.mlab.com:19728/androidws';
 
 
 
-
-
-/*new CronJob('* * * *', function() {
-
-	MongoClient.connect(url, function(err, db) {
-	assert.equal(null, err);
-  	findAndUpdateCharacters(db, function() {
-    db.close();
-  	});
-	});
-
-	MongoClient.connect(url, function(err, db) {
-	assert.equal(null, err);
-  	findAndUpdateBlackList(db, function() {
-    db.close();
-  	});
-	});
-	
-		
-
-
-	
-
-
-}, null, true, 'America/Los_Angeles');*/
-
-
-
-
 app.post('/welcome', function (req, res) {
 
 	var user = req.body;
@@ -70,36 +41,6 @@ app.post('/forgotpasswordmail', function (req, res) {
 
 
 
-
-// app.get("/images/:image", function(req,res) {
-
-//     db.Imagem.findOne({ "nome": 'img_0001' },function(err,imagem) {
-//        res.set("Content-Type", "image/jpg");
-//        res.send( imagem.file );
-//     });
-// });
-
-
-// app.post("/images", function(req,res) {
-   
-// 	var img = req.body;
-// 	imageController.save(img, function(resp){
-// 		res.json(resp);
-// 	});
-// });
-
-// var tibia = require('tibia-node-crawler');
- 
-// tibia.character('Olivera Rullezz', function(data){
-//   console.log(data.character);
-//   console.log(data.character.level);
-//   console.log(data.achievements);
-//   console.log(data.deaths);
-//   //etc 
-//   console.log(data);
-// });
-
-
 app.get('/', function(req, res) {
     res.sendfile('index.html', {root: __dirname })
 });
@@ -108,15 +49,11 @@ app.get('/', function(req, res) {
 
 
 app.get('/users', function (req, res) {
-	//res.status(500).end();
 	
 	userController.list(function(resp){
 		res.json(resp);
 	});
 
-
-
-	//res.json(itens);
 });
 
 
@@ -130,8 +67,6 @@ app.get('/users/:username', function (req, res) {
 	});
 
 
-	//res.status(500).end();
-	// res.json(itens);
 });
 
 
@@ -202,16 +137,44 @@ app.delete('/users/:id', function (req, res) {
 			res.json(resp);
 
 		});
-
-
-	//res.status(500).end();
-	// res.json(itens);
 });
 
 
+app.get('/places', function (req, res) {
+	
+	userController.list(function(resp){
+		res.json(resp);
+	});
+
+});
+
+app.get('/places/:id', function (req, res) {
+
+	var id = req.param('id');
+	userController.user(id, function(resp){
+		res.json(resp);
+
+	});
+
+});
 
 
+app.post('/places', function (req, res) {
+
+	var user = req.body;
+	userController.save(user, function(resp){
+		res.json(resp);
+	});
+
+});
 
 
+app.delete('/places/:id', function (req, res) {
 
+	var id = req.param('_id');
+	
+		placeController.delete(id, function(resp){
+			res.json(resp);
+		});
 
+});
