@@ -1,6 +1,7 @@
 var app = require('./app_config.js');
 
 var userController = require('./controller/userController.js');
+var placeController = require('./controller/placeController.js');
 
 var mailer = require('./controller/mailer.js');
 
