@@ -142,7 +142,7 @@ app.delete('/users/:id', function (req, res) {
 
 app.get('/places', function (req, res) {
 	
-	userController.list(function(resp){
+	placeController.list(function(resp){
 		res.json(resp);
 	});
 
@@ -151,7 +151,7 @@ app.get('/places', function (req, res) {
 app.get('/places/:id', function (req, res) {
 
 	var id = req.param('id');
-	userController.user(id, function(resp){
+	placeController.user(id, function(resp){
 		res.json(resp);
 
 	});
@@ -162,7 +162,7 @@ app.get('/places/:id', function (req, res) {
 app.post('/places', function (req, res) {
 
 	var user = req.body;
-	userController.save(user, function(resp){
+	placeController.save(user, function(resp){
 		res.json(resp);
 	});
 
