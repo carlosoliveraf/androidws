@@ -21,6 +21,18 @@ db.once('open', function(){
 
 	exports.User = mongoose.model('User', userSchema);
 
+	var placeSchema = mongoose.Schema({
+		name: String,
+		email: String,
+		funcionamento: String,
+		url: String,
+		telefone: Number,
+		lat: Number,
+		long: Number
+	});
+
+	exports.Place = mongoose.model('Place', placeSchema);
+
 
 });
 
