@@ -152,7 +152,7 @@ app.get('/places', function (req, res) {
 app.get('/places/:id', function (req, res) {
 
 	var id = req.param('id');
-	placeController.user(id, function(resp){
+	placeController.place(id, function(resp){
 		res.json(resp);
 
 	});
