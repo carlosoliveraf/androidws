@@ -2,6 +2,7 @@ var app = require('./app_config.js');
 
 var userController = require('./controller/userController.js');
 var placeController = require('./controller/placeController.js');
+var postController = require('./controller/postController.js');
 
 var mailer = require('./controller/mailer.js');
 
@@ -47,14 +48,14 @@ app.get('/', function(req, res) {
 });
 
 
-
+//users urls
 
 app.get('/users', function (req, res) {
 	
 	userController.list(function(resp){
 		res.json(resp);
-	});
 
+	});
 });
 
 
@@ -66,8 +67,6 @@ app.get('/users/:username', function (req, res) {
 		res.json(resp);
 
 	});
-
-
 });
 
 
@@ -79,10 +78,6 @@ app.get('/users/:id', function (req, res) {
 		res.json(resp);
 
 	});
-
-
-	//res.status(500).end();
-	// res.json(itens);
 });
 
 
@@ -93,12 +88,6 @@ app.post('/login', function (req, res) {
 		res.json(resp);
 
 	});
-
-
-
-	//res.end("post")
-	//itens.push(item);
-	//res.end();
 });
 
 
@@ -107,25 +96,19 @@ app.post('/users', function (req, res) {
 	var user = req.body;
 	userController.save(user, function(resp){
 		res.json(resp);
+
 	});
-
-
-	//res.end("post")
-	//itens.push(item);
-	//res.end();
 });
 
 
 
 app.put('/users', function (req, res) {
 	
-	//var id = req.param('_id');
 	var userEdit = req.body;
 	userController.update(userEdit, function(resp){
 		res.json(resp);
 
 	});
-
 });
 
 
@@ -133,20 +116,21 @@ app.put('/users', function (req, res) {
 app.delete('/users/:id', function (req, res) {
 
 	var id = req.param('_id');
-	
-		userController.delete(id, function(resp){
-			res.json(resp);
+	userController.delete(id, function(resp){
+		res.json(resp);
 
-		});
+	});
 });
 
+
+//places urls
 
 app.get('/places', function (req, res) {
 	
 	placeController.list(function(resp){
 		res.json(resp);
-	});
 
+	});
 });
 
 app.get('/places/:id', function (req, res) {
@@ -156,26 +140,64 @@ app.get('/places/:id', function (req, res) {
 		res.json(resp);
 
 	});
-
 });
 
 
 app.post('/places', function (req, res) {
 
-	var user = req.body;
-	placeController.save(user, function(resp){
+	var place = req.body;
+	placeController.save(place, function(resp){
 		res.json(resp);
-	});
 
+	});
 });
 
 
 app.delete('/places/:id', function (req, res) {
 
 	var id = req.param('_id');
-	
-		placeController.delete(id, function(resp){
+	placeController.delete(id, function(resp){
 			res.json(resp);
-		});
 
+	});
+});
+
+
+//posts urls
+
+app.get('/posts', function (req, res) {
+	
+	postController.list(function(resp){
+		res.json(resp);
+
+	});
+});
+
+app.get('/posts/:id', function (req, res) {
+
+	var id = req.param('id');
+	postController.post(id, function(resp){
+		res.json(resp);
+
+	});
+});
+
+
+app.post('/posts', function (req, res) {
+
+	var post = req.body;
+	postController.save(post, function(resp){
+		res.json(resp);
+
+	});
+});
+
+
+app.delete('/posts/:id', function (req, res) {
+
+	var id = req.param('_id');
+	postController.delete(id, function(resp){
+		res.json(resp);
+
+	});
 });

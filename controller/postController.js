@@ -1,0 +1,99 @@
+var db = require('../db_config.js');
+
+exports.list = function(callback){
+
+	db.Post.find({}, function(error, posts) {
+
+		if(error) {
+
+			callback({error: 'Não foi possivel retornar os posts'});
+		} else {
+
+			callback(posts);
+		}
+	});
+};
+
+exports.post = function(id, callback) {
+
+	db.Post.findById(id, function(error, post) {
+
+		if(error) {
+
+			callback({error: 'Não foi possivel retornar o post'});
+		} else {
+
+			callback(post);
+		}
+	});
+};
+
+
+exports.save = function(post, callback){
+
+	post.created_at = new Date();
+	
+	new db.Post(post).save(function(error, post) {
+
+		if(error) {
+
+			callback({error: 'Não foi possivel salvar o post'});
+		} else {
+
+			callback(post);
+		}
+	});
+};
+
+
+exports.update = function(postEdit, callback) {
+
+	db.Post.findById(postEdit._id, function(error, post) {
+		
+		if(postEdit.created_at)
+		post.created_at = postEdit.created_at;
+		if(postEdit.lotacao)
+		post.lotacao = postEdit.lotacao;
+		if(postEdit.precos)
+		post.precos = postEdit.precos;
+		if(postEdit.atendimento)
+		post.atendimento = postEdit.atendimento;
+		if(postEdit.obs)
+		post.obs = postEdit.obs;
+		if(postEdit.user)
+		post.user = postEdit.user;
+		if(postEdit.place)
+		post.place = postEdit.place;
+
+		post.save(function(error, post) {
+
+			if(error) {
+				callback({error: 'Não foi possivel salvar o post'});
+			} else {
+				callback(post);
+			}
+		});
+	});
+};
+
+
+exports.delete = function(id, callback) {
+
+	db.Post.findById(id, function(error, post) {
+
+		if(error) {
+
+			callback({error: 'Não foi possivel retornar o post'});
+		} else {
+
+			post.remove(function(error) {
+
+				if(!error) {
+
+					callback({response: 'Post excluido com sucesso'});
+				}
+			});
+		}
+	});
+	
+};
