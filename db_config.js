@@ -48,6 +48,16 @@ db.once('open', function(){
 
 	exports.Post = mongoose.model('Post', postSchema);
 
+	var chatSchema = mongoose.Schema({
+		created_at: Date,
+		userSend: String,
+		userRecei: String,
+		msg: String
+
+	});
+
+	exports.Chat = mongoose.model('Chat', chatSchema);
+
 
 });
 
