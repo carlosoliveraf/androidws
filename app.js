@@ -3,6 +3,7 @@ var app = require('./app_config.js');
 var userController = require('./controller/userController.js');
 var placeController = require('./controller/placeController.js');
 var postController = require('./controller/postController.js');
+var chatController = require('./controller/chatController.js');
 
 var mailer = require('./controller/mailer.js');
 
@@ -197,6 +198,59 @@ app.delete('/posts/:id', function (req, res) {
 
 	var id = req.param('_id');
 	postController.delete(id, function(resp){
+		res.json(resp);
+
+	});
+});
+
+
+
+//chats urls
+
+
+app.get('/chats', function (req, res) {
+	
+	chatController.list(function(resp){
+		res.json(resp);
+
+	});
+});
+
+
+app.get('/lastchatbysender/:id', function (req, res) {
+
+	var id = req.param('id');
+	chatController.chatBySender(id, function(resp){
+		res.json(resp);
+
+	});
+});
+
+
+app.get('/chats/:id', function (req, res) {
+
+	var id = req.param('id');
+	chatController.post(id, function(resp){
+		res.json(resp);
+
+	});
+});
+
+
+app.post('/chats', function (req, res) {
+
+	var post = req.body;
+	chatController.save(post, function(resp){
+		res.json(resp);
+
+	});
+});
+
+
+app.delete('/chats/:id', function (req, res) {
+
+	var id = req.param('_id');
+	chatController.delete(id, function(resp){
 		res.json(resp);
 
 	});
