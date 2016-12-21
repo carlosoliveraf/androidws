@@ -17,7 +17,7 @@ exports.list = function(callback){
 
 exports.chatBySender = function(userSend, callback) {
 
-	db.Chat.findOne({ 'userSend': userSend }, function (err, chat) {
+	db.Chat.findOne({ $or: [ { 'userSend': userSend }, { 'userRecei': userSend } ] }, function (err, chat) {
 		
 		if(!err){
 			
