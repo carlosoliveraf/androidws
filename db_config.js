@@ -51,7 +51,9 @@ db.once('open', function(){
 	var chatSchema = mongoose.Schema({
 		created_at: Date,
 		userSend: String,
+		userSendName: String,
 		userRecei: String,
+		userReceiName: String,
 		msg: String
 
 	});
