@@ -29,6 +29,20 @@ exports.post = function(id, callback) {
 };
 
 
+exports.postsByPlace = function(idPlace, callback) {
+
+	db.Post.find({ 'place': idPlace }, function (err, posts) {
+		
+		if(!err){
+			
+  				callback(posts);
+		}else{
+			callback({error: 'Não foi possivel retornar os posts'});
+		}
+	});
+};
+
+
 exports.save = function(post, callback){
 
 	post.created_at = new Date();

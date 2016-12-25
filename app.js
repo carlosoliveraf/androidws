@@ -184,6 +184,18 @@ app.get('/posts/:id', function (req, res) {
 });
 
 
+
+app.post('/postsbyplace', function (req, res) {
+
+	var post = req.body;
+	postController.postsByPlace(post, function(resp){
+		res.json(resp);
+
+	});
+});
+
+
+
 app.post('/posts', function (req, res) {
 
 	var post = req.body;
