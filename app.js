@@ -195,6 +195,16 @@ app.post('/postsbyplace', function (req, res) {
 });
 
 
+app.post('/obsbyplace', function (req, res) {
+
+	var place = req.body.place;
+	postController.obsByPlace(place, function(resp){
+		res.json(resp);
+
+	});
+});
+
+
 
 app.post('/posts', function (req, res) {
 

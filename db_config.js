@@ -1,4 +1,4 @@
-//var db_string = 'mongodb://127.0.0.1/appteste';
+//var db_string = 'mongodb://127.0.0.1/boraws';
 var db_string = 'mongodb://root:admin@ds119728.mlab.com:19728/androidws';
 
 
